@@ -1,0 +1,114 @@
+:root {
+    --dot-color: white;
+    --center-mass-size: 25px;
+    --background-color: #03678D;
+    --small-dot-color: rgba(3, 103, 141, 0.6);
+    --speed: 1s;
+    --double-speed: calc(var(--speed) * 2);
+  }
+  
+  @keyframes bg {
+    from {background-color: darken(var(--background-color), 5%);}
+  }
+  
+  .bound {
+    width: 700px;
+    border: solid 1px black;
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    display: none;
+  }
+  
+  body, html {
+    height: 100%;
+  }
+  
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-color);
+    background-image: 
+      radial-gradient(circle at top, rgba(black, 0), rgba(black, .6)), 
+      linear-gradient(0deg, rgba(black, .5), rgba(black, 0));
+    animation: var(--double-speed) bg ease infinite alternate;
+  }
+  
+  .main_spinner {
+    animation: var(--double-speed) spin linear infinite;
+    width: 150px;
+  }
+  
+  .dot {
+    animation: var(--speed) backspin linear infinite;
+    position: absolute;
+    --size: 50px;
+    --distance: 112px;
+    box-shadow: 
+      0 var(--distance) var(--dot-color), 
+      0 calc(-1 * var(--distance)) var(--dot-color), 
+      var(--distance) 0 var(--dot-color), 
+      calc(-1 * var(--distance)) 0 var(--dot-color);
+    border-radius: 100px;
+    height: var(--size);
+    width: var(--size);
+  }
+  
+  .dot_1 {
+    left: 0;
+  }
+  
+  .dot_2 {
+    right: 0;
+  }
+  
+  .center_mass {
+    position: absolute;
+    width: var(--center-mass-size);
+    height: var(--center-mass-size);
+    left: 50%;
+    top: 50%;
+    margin-top: calc(var(--center-mass-size) * -0.5);
+    margin-left: calc(var(--center-mass-size) * -0.5);
+    background: var(--small-dot-color);
+    border-radius: var(--center-mass-size);
+    box-shadow: 
+      100px 0 var(--small-dot-color), 
+      -100px 0 var(--small-dot-color);
+  }
+  
+  @-webkit-keyframes spin {
+    0% { 
+      -webkit-transform: 
+        rotate(0deg) 
+        scale(1);
+    }
+    50% { 
+      -webkit-transform: 
+        rotate(180deg) 
+        scale(0.9);
+    }
+    100% { 
+      -webkit-transform: 
+        rotate(360deg) 
+        scale(1);
+    }
+  }
+  
+  @-webkit-keyframes backspin {
+    0% { 
+      -webkit-transform: 
+        rotate(0deg) 
+        scale(1);
+    }
+    50% { 
+      -webkit-transform: 
+        rotate(-180deg) 
+        scale(0.9);
+    }
+    100% { 
+      -webkit-transform: 
+        rotate(-360deg) 
+        scale(1);
+    }
+  }

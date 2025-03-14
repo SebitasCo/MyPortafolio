@@ -1,4 +1,4 @@
-import { ItemNavBar } from "../../Ui/ItemNavBar/ItemNavBar";
+import { ItemNavBar } from "../../UI/ItemNavBar/ItemNavBar";
 
 export const NavBar = () => {
   return (
